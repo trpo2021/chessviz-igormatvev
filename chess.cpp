@@ -12,6 +12,22 @@ void CellBOARD(){
       Board[i][j] = '*';
     }
   }
+  Board[0][1] = 'A';
+  Board[0][2] = 'B';
+  Board[0][3] = 'C';
+  Board[0][4] = 'D';
+  Board[0][5] = 'E';
+  Board[0][6] = 'F';
+  Board[0][7] = 'G';
+  Board[0][8] = 'H';
+  Board[1][0] = '1';
+  Board[2][0] = '2';
+  Board[3][0] = '3';
+  Board[4][0] = '4';
+  Board[5][0] = '5';
+  Board[6][0] = '6';
+  Board[7][0] = '7';
+  Board[8][0] = '8';
 }
 
 void Figures(){
@@ -50,38 +66,6 @@ void Figures(){
 }
 
 void Stroke(){
-  for(int i = 1; i < 9; i++){
-      if(i == 1){
-        Board[i][1] = 'R';//Black Rook
-        Board[i][2] = 'H';//Black Horse
-        Board[i][3] = 'B';//Black Bishop
-        Board[i][4] = 'Q';//Black Queen
-        Board[i][5] = 'K';//Black King
-        Board[i][6] = 'B';//Black Bishop
-        Board[i][7] = 'H';//Black Horse
-        Board[i][8] = 'R';//Black Rook
-    }
-    if(i == 2){
-      for(int j = 1; j < 9; j++){
-        Board[i][j] = 'P';//Black pawn
-      }
-    }
-    if(i == 7){
-      for(int j = 1; j < 9; j++){
-        Board[i][j] = 'p';//White pawn
-      }
-    }
-    if(i == 8){
-      Board[i][1] = 'r';//White Rook
-      Board[i][2] = 'h';//White Horse
-      Board[i][3] = 'b';//White Bishop
-      Board[i][4] = 'q';//White Queen
-      Board[i][5] = 'k';//White King
-      Board[i][6] = 'b';//White Bishop
-      Board[i][7] = 'h';//White Horse
-      Board[i][8] = 'r';//White Rook
-    }
-  }
   switch(CellLetter[1]){
     case 'A':
       z = 1;
@@ -118,7 +102,7 @@ void Stroke(){
         }
       }
     }
-    Board[z][CellNumber] = Board[ii][jj];
+    Board[CellNumber][z] = Board[ii][jj];
     Board[ii][jj] = '*';
   } else {
     Board[z][CellNumber] = Board[g][FigureCoorJ];
@@ -128,6 +112,7 @@ void Stroke(){
 
 void RepeatedShapes(){
   count = 0;
+  g = 0;
   for(int i = 1; i < 9; i++){
     for(int j = 1; j < 9; j++){
       if(Board[i][j] == Figure[1]){
@@ -200,5 +185,6 @@ int main(){
       }
       cout << endl;
     }
+    count = 0;
   }
 }
