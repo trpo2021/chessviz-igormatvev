@@ -1,36 +1,16 @@
+
 #include <iostream>
-#include <string.h>
-using namespace std;
 
-char Board[11][11];
-char Figure[1], CellLetter[1], FigureCoorI[1];
-int CellNumber = 0, z = 0, g = 0, FigureCoorJ, count = 0;
-
-void CellBOARD(){
-  for(int i = 1; i < 9; i++){
-    for(int j = 1;j < 9; j++){
-      Board[i][j] = '*';
+void PrintBoard(char Board[11][11]){
+    for(int i = 0; i < 9; ++i){
+      for(int j = 0; j < 9; ++j){
+        std::cout << Board[i][j] << " ";
+      }
+      std::cout << std::endl;
     }
-  }
-  Board[0][1] = 'A';
-  Board[0][2] = 'B';
-  Board[0][3] = 'C';
-  Board[0][4] = 'D';
-  Board[0][5] = 'E';
-  Board[0][6] = 'F';
-  Board[0][7] = 'G';
-  Board[0][8] = 'H';
-  Board[1][0] = '1';
-  Board[2][0] = '2';
-  Board[3][0] = '3';
-  Board[4][0] = '4';
-  Board[5][0] = '5';
-  Board[6][0] = '6';
-  Board[7][0] = '7';
-  Board[8][0] = '8';
 }
 
-void Figures(){
+void Figures(char Board[11][11]){
   for(int i = 1; i < 9; i++){
       if(i == 1){
         Board[i][1] = 'R';//Black Rook
@@ -65,126 +45,168 @@ void Figures(){
   }
 }
 
-void Stroke(){
-  switch(CellLetter[1]){
+void CellBOARD(char Board[11][11]){
+  for(int i = 1; i < 9; ++i){
+    for(int j = 1;j < 9; ++j){
+      Board[i][j] = '*';
+    }
+  }
+  Board[0][0] = 'X';
+  Board[0][1] = 'A';
+  Board[0][2] = 'B';
+  Board[0][3] = 'C';
+  Board[0][4] = 'D';
+  Board[0][5] = 'E';
+  Board[0][6] = 'F';
+  Board[0][7] = 'G';
+  Board[0][8] = 'H';
+  Board[1][0] = '1';
+  Board[2][0] = '2';
+  Board[3][0] = '3';
+  Board[4][0] = '4';
+  Board[5][0] = '5';
+  Board[6][0] = '6';
+  Board[7][0] = '7';
+  Board[8][0] = '8';
+  Figures(Board);
+  PrintBoard(Board);
+}
+
+void Move(char Board[11][11], char FiguresP[5]){
+    int x, y, z, h;
+    switch(FiguresP[0]){
     case 'A':
+      x = 1;
+      break;
+    case 'B':
+      x = 2;
+      break;
+    case 'C':
+      x = 3;
+      break;
+    case 'D':
+      x = 4;
+      break;
+    case 'E':
+      x = 5;
+      break;
+    case 'F':
+      x = 6;
+      break;
+    case 'G':
+      x = 7;
+      break;
+    case 'H':
+      x = 8;
+      break;
+    default:
+      std::cout << "Ошибка! Введите существующую клетку!" << std::endl;
+      return;
+  }
+  switch(FiguresP[3]){
+    case 'A':
+      y = 1;
+      break;
+    case 'B':
+      y = 2;
+      break;
+    case 'C':
+      y = 3;
+      break;
+    case 'D':
+      y = 4;
+      break;
+    case 'E':
+      y = 5;
+      break;
+    case 'F':
+      y = 6;
+      break;
+    case 'G':
+      y = 7;
+      break;
+    case 'H':
+      y = 8;
+      break;
+    default:
+      std::cout << "Ошибка! Введите существующую клетку!" << std::endl;
+      return;
+  }
+  switch(FiguresP[1]){
+    case '1':
       z = 1;
       break;
-    case 'B':
+    case '2':
       z = 2;
       break;
-    case 'C':
+    case '3':
       z = 3;
       break;
-    case 'D':
+    case '4':
       z = 4;
       break;
-    case 'E':
+    case '5':
       z = 5;
       break;
-    case 'F':
+    case '6':
       z = 6;
       break;
-    case 'G':
+    case '7':
       z = 7;
       break;
-    case 'H':
+    case '8':
       z = 8;
       break;
+    default:
+      std::cout << "Ошибка! Введите существующую клетку!" << std::endl;
+      return;
   }
-  if(count == 1){
-    int ii = 1, jj = 1;
-    for(int i = 1; i < 9; i++){
-      for(int j = 1; j < 9; j++){
-        if(Board[i][j] == Figure[1]){
-          ii = i;
-          jj = j;
-        }
-      }
-    }
-    Board[CellNumber][z] = Board[ii][jj];
-    Board[ii][jj] = '*';
-  } else {
-    Board[z][CellNumber] = Board[g][FigureCoorJ];
-    Board[g][FigureCoorJ] = '*';
+  switch(FiguresP[4]){
+    case '1':
+      h = 1;
+      break;
+    case '2':
+      h = 2;
+      break;
+    case '3':
+      h = 3;
+      break;
+    case '4':
+      h = 4;
+      break;
+    case '5':
+      h = 5;
+      break;
+    case '6':
+      h = 6;
+      break;
+    case '7':
+      h = 7;
+      break;
+    case '8':
+      h = 8;
+      break;
+    default:
+      std::cout << "Ошибка! Введите существующую клетку!" << std::endl;
+      return;
   }
+  Board[h][y] = Board[z][x];
+  Board[z][x] = '*';
+  std::cout << x << " " << z << " " << Board[x][z] << std::endl;
+  std::cout << Board[y][h] << std::endl;
+  PrintBoard(Board);
 }
 
-void RepeatedShapes(){
-  count = 0;
-  g = 0;
-  for(int i = 1; i < 9; i++){
-    for(int j = 1; j < 9; j++){
-      if(Board[i][j] == Figure[1]){
-        count++;
-      }
+int main()
+{
+    char Board[11][11];
+    CellBOARD(Board);
+    char FiguresP[5];
+    while(true){
+        std::cout << "Введите координату клетки нужной фигуры и координату клетки 'назначения'(пример: E2-E5): " << std::endl;
+        for(int i = 0; i < 5; ++i)
+            std::cin >> FiguresP[i];
+        Move(Board, FiguresP);
     }
-  }
-  if(count > 1){
-    cout << "Enter letter cell: ";
-    cin >> FigureCoorI[1];
-    cout << "Enter cell number: ";
-    cin >> FigureCoorJ;
-  }
-  switch(FigureCoorI[1]){
-    case 'A':
-      g = 1;
-      break;
-    case 'B':
-      g = 2;
-      break;
-    case 'C':
-      g = 3;
-      break;
-    case 'D':
-      g = 4;
-      break;
-    case 'E':
-      g = 5;
-      break;
-    case 'F':
-      g = 6;
-      break;
-    case 'G':
-      g = 7;
-      break;
-    case 'H':
-      g = 8;
-      break;
-  }
-}
-
-
-int main(){
-    CellBOARD();
-    Figures();
-    for(int i = 0; i < 10; i++){
-      for(int j = 0; j < 10; j++){
-        cout << Board[i][j] << " ";
-      }
-      cout << endl;
-    }
-  while(true){
-    cout << endl;
-    cout << "Enter name figure: ";
-    cin >> Figure[1];
-    RepeatedShapes();
-    cout << "Enter the cell letter where you want to place the figure: ";
-    cin >> CellLetter[1];
-    cout << "Enter the cell number where you want to place the figure: ";
-    cin >> CellNumber;
-    if(CellNumber > 8 || CellNumber == 0){
-      cout << "EROR";
-      continue;
-    }
-    cout << endl;
-    Stroke();
-    for(int i = 0; i < 10; i++){
-      for(int j = 0; j < 10; j++){
-        cout << Board[i][j] << " ";
-      }
-      cout << endl;
-    }
-    count = 0;
-  }
+    return 0;
 }
