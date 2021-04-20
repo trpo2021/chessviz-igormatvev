@@ -1,3 +1,3 @@
-go: chess.cpp
+run: chess.cpp
 	gcc -o hello chess.cpp
 	 
