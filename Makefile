@@ -1,3 +1,4 @@
-hello: chess.cpp
-	gcc -o hello chess.cpp
-	 
+all: run
+
+run: chess.cpp
+	g++ -Wall chess.cpp -o run
