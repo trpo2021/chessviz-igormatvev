@@ -192,8 +192,6 @@ void Move(char Board[11][11], char FiguresP[5]){
   }
   Board[h][y] = Board[z][x];
   Board[z][x] = '*';
-  std::cout << x << " " << z << " " << Board[x][z] << std::endl;
-  std::cout << Board[y][h] << std::endl;
   PrintBoard(Board);
 }
 
