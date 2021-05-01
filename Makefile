@@ -1,3 +1,5 @@
+run: all
+
 all: bin/chess
 
 bin/chess: obj/chess.o obj/lib/chesslib.a
@@ -14,7 +16,7 @@ obj/lib/chesslib.a:obj/src/bibl.o
 
 run:
 	./bin/chess
-	
+
 clean:
 	find . -name "*.o" -exec rm '{}' \;
 	find . -name "*.d" -exec rm '{}' \;
@@ -22,4 +24,3 @@ clean:
 	find ./bin -type f -name "chess" -exec rm -f '{}' \;
 	find ./bin -type f -name "test" -exec rm -f '{}' \;
 .PHONY: clean run all
-
