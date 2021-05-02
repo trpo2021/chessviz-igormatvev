@@ -1,6 +1,6 @@
 #include "bibl.h"
 #include <iostream>
-
+#include <math.h>
 void PrintBoard(char Board[11][11]){
     for(int i = 0; i < 9; ++i){
       for(int j = 0; j < 9; ++j){
@@ -234,6 +234,193 @@ void Move(char Board[11][11], char FiguresP[5], int countar[8], int countar1[8])
             std::cout << "Эта фигура не может так двигаться." << std::endl;
             return;
        }
+    }
+  }
+  if(Board[z][x] == 'R'){
+    if(x != y && z != h){
+        std::cout << "Эта фигура не может так двигаться." << std::endl;
+        return;
+    }
+  }
+  if(Board[z][x] == 'r'){
+    if(x != y && z != h){
+        std::cout << "Эта фигура не может так двигаться." << std::endl;
+        return;
+    }
+  }
+  if(Board[z][x] == 'B'){
+    if(abs(y-x) != abs(h-z)){
+        std::cout << "Эта фигура не может так двигаться." << std::endl;
+        return;
+    }
+  }
+  if(Board[z][x] == 'b'){
+    if(abs(y-x) != abs(h-z)){
+        std::cout << "Эта фигура не может так двигаться." << std::endl;
+        return;
+    }
+  }
+  if(Board[z][x] == 'H'){
+    if(y == (x+1) && h == (z+2)){
+        Board[h][y] = Board[z][x];
+        Board[z][x] = '*';
+        PrintBoard(Board);
+        return;
+    } else if(y == (x-1) && h == (z+2)){
+        Board[h][y] = Board[z][x];
+        Board[z][x] = '*';
+        PrintBoard(Board);
+        return;
+    } else if(y == (x+1) && h == (z-2)){
+        Board[h][y] = Board[z][x];
+        Board[z][x] = '*';
+        PrintBoard(Board);
+        return;
+    } else if(y == (x-1) && h == (z-2)){
+        Board[h][y] = Board[z][x];
+        Board[z][x] = '*';
+        PrintBoard(Board);
+        return;
+    } else if(y == (x+2) && h == (z-1)){
+        Board[h][y] = Board[z][x];
+        Board[z][x] = '*';
+        PrintBoard(Board);
+        return;
+    } else if(y == (x+2) && h == (z+1)){
+        Board[h][y] = Board[z][x];
+        Board[z][x] = '*';
+        PrintBoard(Board);
+        return;
+    } else if(y == (x-2) && h == (z-1)){
+        Board[h][y] = Board[z][x];
+        Board[z][x] = '*';
+        PrintBoard(Board);
+        return;
+    } else if(y == (x-2) && h == (z+1)){
+        Board[h][y] = Board[z][x];
+        Board[z][x] = '*';
+        PrintBoard(Board);
+    } else {
+        std::cout << "Эта фигура не может так двигаться." << std::endl;
+        return;
+    }
+  }
+  if(Board[z][x] == 'h'){
+    if(y == (x-1) && h == (z-2)){
+        Board[h][y] = Board[z][x];
+        Board[z][x] = '*';
+        PrintBoard(Board);
+        return;
+    } else if(y == (x+1) && h == (z-2)){
+        Board[h][y] = Board[z][x];
+        Board[z][x] = '*';
+        PrintBoard(Board);
+        return;
+    } else if(y == (x-1) && h == (z+2)){
+        Board[h][y] = Board[z][x];
+        Board[z][x] = '*';
+        PrintBoard(Board);
+        return;
+    } else if(y == (x+1) && h == (z+2)){
+        Board[h][y] = Board[z][x];
+        Board[z][x] = '*';
+        PrintBoard(Board);
+        return;
+    } else if(y == (x-2) && h == (z+1)){
+        Board[h][y] = Board[z][x];
+        Board[z][x] = '*';
+        PrintBoard(Board);
+        return;
+    } else if(y == (x-2) && h == (z-1)){
+        Board[h][y] = Board[z][x];
+        Board[z][x] = '*';
+        PrintBoard(Board);
+        return;
+    } else if(y == (x+2) && h == (z+1)){
+        Board[h][y] = Board[z][x];
+        Board[z][x] = '*';
+        PrintBoard(Board);
+        return;
+    } else if(y == (x+2) && h == (z-1)){
+        Board[h][y] = Board[z][x];
+        Board[z][x] = '*';
+        PrintBoard(Board);
+        return;
+    } else{
+        std::cout << "Эта фигура не может так двигаться." << std::endl;
+        return;
+    }
+  }
+  if(Board[z][x] == 'Q'){
+    if(x == y || z == h){
+        Board[h][y] = Board[z][x];
+        Board[z][x] = '*';
+        PrintBoard(Board);
+        return;
+    } else {
+        if(abs(y-x) == abs(h-z)){
+            Board[h][y] = Board[z][x];
+            Board[z][x] = '*';
+            PrintBoard(Board);
+            return;
+        } else {
+            std::cout << "Эта фигура не может так двигаться." << std::endl;
+            return;
+        }
+    }
+  }
+  if(Board[z][x] == 'q'){
+    if(x == y || z == h){
+        Board[h][y] = Board[z][x];
+        Board[z][x] = '*';
+        PrintBoard(Board);
+        return;
+    } else {
+        if(abs(y-x) == abs(h-z)){
+            Board[h][y] = Board[z][x];
+            Board[z][x] = '*';
+            PrintBoard(Board);
+            return;
+        } else {
+            std::cout << "Эта фигура не может так двигаться." << std::endl;
+            return;
+        }
+    }
+  }
+  if(Board[z][x] == 'K'){
+    if(x == y){
+        if(abs(h-z) > 1){
+            std::cout << "Эта фигура не может так двигаться." << std::endl;
+            return;
+        }
+    } else if (h == z) {
+        if(abs(y-x) > 1){
+            std::cout << "Эта фигура не может так двигаться." << std::endl;
+            return;
+        }
+    } else {
+        if(abs(y-x) > 1 && abs(h-z) > 1){
+            std::cout << "Эта фигура не может так двигаться." << std::endl;
+            return;
+        }
+    }
+  }
+  if(Board[z][x] == 'k'){
+    if(x == y){
+        if(abs(h-z) > 1){
+            std::cout << "Эта фигура не может так двигаться." << std::endl;
+            return;
+        }
+    } else if (h == z) {
+        if(abs(y-x) > 1){
+            std::cout << "Эта фигура не может так двигаться." << std::endl;
+            return;
+        }
+    } else {
+        if(abs(y-x) > 1 && abs(h-z) > 1){
+            std::cout << "Эта фигура не может так двигаться." << std::endl;
+            return;
+        }
     }
   }
   Board[h][y] = Board[z][x];
