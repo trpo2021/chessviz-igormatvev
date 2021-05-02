@@ -1,5 +1,6 @@
 
 #include <iostream>
+#include <math.h>
 #include "bibl.h"
 
 int main()
