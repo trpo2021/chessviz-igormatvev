@@ -1,4 +1,4 @@
-run: all
+
 
 all: bin/chess
 
