@@ -1,6 +1,6 @@
-all: run
-
 all: bin/chess
+
+all: run
 
 bin/chess: obj/chess.o obj/lib/chesslib.a
 	g++ obj/chess.o -Wall -Werror -L. obj/lib/chesslib.a -o $@
